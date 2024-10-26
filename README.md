@@ -28,11 +28,11 @@ Serve para retornar toda tabela em uma nova tabela ou coluna.
 
 Para usar siga modelagem – nova tabela 
 
- NOME MEDIDA = ALL(NOME_TABELA) 
+ 	NOME MEDIDA = ALL(NOME_TABELA) 
 
 Ou 
 
-ALL (NOME_TABELA[COLUNA]) 
+	ALL (NOME_TABELA[COLUNA]) 
 
 Função muito utilizada em combinação com a CALCULATE. 
 
@@ -42,18 +42,18 @@ Retorna uma tabela que foi filtrada ou Auxilia no Filtro.
 
 Tabela – modelagem – inserir – tabela 
 
-FILTER(fVendas,fVendas[código_loja]=”CL001”]) 
+	FILTER(fVendas,fVendas[código_loja]=”CL001”]) 
  
 
 Ou como Auxiliar 
 
-COUNTROWS(FILTER(Tabela, tabela[coluna]=”Criterio”)) 
+	COUNTROWS(FILTER(Tabela, tabela[coluna]=”Criterio”)) 
 
 8 - RELATED (funciona com criação de colunas) 
 
 Precisa do relacionamento ativo para funcionar. Cria uma coluna/similar ao PROCV 
 
-9 - RELATED(nome_tabela[procura]) 
+	RELATED(nome_tabela[procura]) 
 
 Nome tabela[procura] – procura resultados da tabela que está relacionada para retornar o resultado. 
 Função só funciona na tabela fato que *(muitos) no relacionamento de 1(um) com a tabela dimensão. 
