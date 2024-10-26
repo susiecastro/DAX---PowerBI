@@ -1,4 +1,4 @@
-DAX FORMATER
+<B>DAX FORMATER</B>
 
 Site para Formatar as funções DAX – indentar 
 
@@ -346,7 +346,7 @@ dimCalendario =
 
                 "ANO_MÊS",EOMONTH([Date],0) 
 
-) 
+		) 
 
  
 
@@ -375,7 +375,7 @@ DatesQTD e DatesMTD – Funcionam de maneira parecidas, mudando o intervalo para
 
 28 - TOTALYTD 
 
-TotalYTD([faturamento],dCalendario[Date]) 
+	TotalYTD([faturamento],dCalendario[Date]) 
  
 Por traz dos panos ela já possui a CALCULATE – está na função de maneira implicita 
 
@@ -384,13 +384,13 @@ Por traz dos panos ela já possui a CALCULATE – está na função de maneira i
 
 SAMEPERIOD =  
 
-CALCULATE([faturamento], 
-			SAMEPERIODLASTYEAR(dcalendario[Date]) 
+		CALCULATE([faturamento], 
+				SAMEPERIODLASTYEAR(dcalendario[Date]) 
  
 30 - YoY% 
  
 
-Divide = ([faturamento]-[sameperiod],[sameperiod]) 
+		Divide = ([faturamento]-[sameperiod],[sameperiod]) 
  
 
 Retorna o percentual de diferença do ano anterior. 
@@ -403,23 +403,23 @@ Função pode pegar faturamento de acordo com o período que você especificar
 
  
 
-CALCULATE([Faturamento], 
-
-     DATEADD(dCalendario[Date],-1,Month) 
+	CALCULATE([Faturamento], 
+	
+	     DATEADD(dCalendario[Date],-1,Month) 
 
 No exemplo acima o -1, pega um período anterior o Month específica que é o mês. 
 
 Se fosse 2 meses anteriores a função seria: 
 
-CALCULATE([Faturamento], 
-
-     DATEADD(dCalendario[Date],-2,Month) 
+		CALCULATE([Faturamento], 
+		
+		     DATEADD(dCalendario[Date],-2,Month) 
 
 Para pegar faturamento do ano anterior: 
 
-CALCULATE([Faturamento], 
-
-     DATEADD(dCalendario[Date],-1,Year) 
+		CALCULATE([Faturamento], 
+		
+		     DATEADD(dCalendario[Date],-1,Year) 
 
 
 Este exemplo tem o mesmo comportamento do SAMEPERIODLASTYEAR 
@@ -428,43 +428,43 @@ Este exemplo tem o mesmo comportamento do SAMEPERIODLASTYEAR
 
 32 - PREVIOUSMONTH 
 
-CALCULATE ([Faturamento], 
-PREVIOUSMONTH(dCalendario[Date])) 
+		CALCULATE ([Faturamento], 
+		PREVIOUSMONTH(dCalendario[Date])) 	
 
 A função não se adapta ao contexto de filtro Dia, como a DATEADD 
 
  
 33 - PARELLELPERIOD 
 
-CALCULATE([Faturamento], 
-  PARALLELPERIOD( 
-    dCalendario[Date],-1,MONTH)
-  ) 
+		CALCULATE([Faturamento], 
+		  PARALLELPERIOD( 
+		    dCalendario[Date],-1,MONTH)
+		  ) 	
 
  34 - DATESBETWEEN 
 
-CALCULATE([Faturamento], 
-
-  DATESBTWEEN(dCalendario[Date], 
-
-      Max(dCalendario[Date]-30, 
-
-      Max(dCalendario[Date]) 
-) 
+		CALCULATE([Faturamento], 
+		
+		  DATESBTWEEN(dCalendario[Date], 
+		
+		      Max(dCalendario[Date]-30, 
+		
+		      Max(dCalendario[Date]) 
+		) 
 
 O cálculo retorna o valor acumulado dos últimos 30 dias. 
 
 35 - DATESINPERIOD 
 
-CALCULATE([Faturamento], 
-      DATESINPERIOD(dCalendario[Date], 
-
-      Max(dCalendario[Date]), 
-
-      -30, 
-
-      Day) 
-) 
+		CALCULATE([Faturamento], 
+		      DATESINPERIOD(dCalendario[Date], 
+		
+		      Max(dCalendario[Date]), 
+		
+		      -30, 
+		
+		      Day) 
+		) 
 
 Se alterar o -30 e o Day, muda o período do cálculo. 
 No exemplo ele pega os últimos 30 dias e faz o acumulado. 
@@ -492,42 +492,42 @@ No exemplo ele pega os últimos 30 dias e faz o acumulado.
 
 Tira a diferença entre duas datas 
 
-INTERVALO DE DIAS = DATEDIFF( 
-fVendas[DtCompra], 
-
-fVendas[DtEntrega], 
-Day) 
- 
+			INTERVALO DE DIAS = DATEDIFF( 
+						fVendas[DtCompra], 
+			
+						fVendas[DtEntrega], 
+						Day) 
+			 
 38 - OPENINGBALANCEMONTH 
 Sempre pega o saldo do último dia do mês anterior 
 
-OPENINGBALANCEMONTH([Faturamento],dCalendario[Date]) 
+		OPENINGBALANCEMONTH([Faturamento],dCalendario[Date]) 
 
  
 39 - STARTOFMONTH 
 Sempre pega o saldo do último dia do mês anterior 
 
-CALCULATE([faturamento], 
-  STARTOFMONTH(dCalendario[Date])
-  ) 
+		CALCULATE([faturamento], 
+		  STARTOFMONTH(dCalendario[Date])
+		  ) 	
 
 Sempre retorna o saldo do primeiro dia do mês corrente. 
 
 40 - ENDOFMONTH 
 Sempre retorna o saldo do último dia do mês corrente
 
-CALCULATE([faturamento], 
-  ENDOFMONTH(dCalendario[Date])
-  ) 
+		CALCULATE([faturamento], 
+		  ENDOFMONTH(dCalendario[Date])
+		  ) 
 
  
 41 - LASTDATE 
 
 Retorna o último dia do contexto de filtro aplicado a um visual. 
 
-CALCULATE([faturamento], 
-  LASTDATE(dCalendario[Date)
-  ) 
+		CALCULATE([faturamento], 
+		  LASTDATE(dCalendario[Date)
+		  ) 
 
 FUNÇÕES DE TABELA 
 
@@ -543,13 +543,13 @@ No menu Ferramentas de Tabela – Nova tabela
 
  Digite: 
 
- ADD_COLUMNS_PRODU1 =  
-
-            ADDCOLUMNS( 
-
-                dprodutos, 
-
-                "faturamento",[Faturamento]) 
+		 ADD_COLUMNS_PRODU1 =  
+		
+		            ADDCOLUMNS( 
+		
+		                dprodutos, 
+		
+		                "faturamento",[Faturamento]) 
 
  
 
@@ -565,79 +565,76 @@ No menu Ferramentas de Tabela – Nova tabela
 
 Digite: 
 
-ADD_COLUMNS_PRODU2 = 
-
-ADDCOLUMNS( 
-
-VALUES(dProdutos[CATEGORIA_PRODUTO]), 
-
-    "Faturammento",[Faturamento], 
-
-      "Margem_produto",[Margem%], 
-
-      "Qtde_vendida",[#QtdVendida] 
-
-    ) 
+		ADD_COLUMNS_PRODU2 = 
+		
+		ADDCOLUMNS( 
+		
+		VALUES(dProdutos[CATEGORIA_PRODUTO]), 
+		
+		    "Faturammento",[Faturamento], 
+		
+		      "Margem_produto",[Margem%], 
+		
+		      "Qtde_vendida",[#QtdVendida] 
+		
+		    ) 
 
 Exemplo usando como Medida e tabela Virtual 
 
-ADD_COLUMNS_MEDIDA1 =  
-
-        VAR TABELA_VIRTUAL =ADDCOLUMNS( 
-
-                                VALUES(dProdutos[CATEGORIA_PRODUTO]), 
-
-                                "Faturammento",[Faturamento], 
-
-                                "Margem_produto",[Margem%], 
-
-                                "Qtde_virtual",[#QtdVendida] 
-
-                                    ) 
-
-        VAR RESULT =  
-
-                    SUMX(TABELA_VIRTUAL, 
-
-                    [Qtde_virtual] 
-
-                    ) 
-
-        RETURN RESULT 
+			ADD_COLUMNS_MEDIDA1 =  
+			
+			        VAR TABELA_VIRTUAL =ADDCOLUMNS( 
+			
+			                                VALUES(dProdutos[CATEGORIA_PRODUTO]), 
+			
+			                                "Faturammento",[Faturamento], 
+			
+			                                "Margem_produto",[Margem%], 
+			
+			                                "Qtde_virtual",[#QtdVendida] 
+			
+			                                    ) 
+			
+			        VAR RESULT =  
+			
+			                    SUMX(TABELA_VIRTUAL, 
+			
+			                    [Qtde_virtual] 
+			
+			                    ) 
+			
+			        RETURN RESULT 
 
  
 
 Exemplo usando como Medida, condicional IF e tabela Virtual 
 
  
-
- 
-
 ADD_COLUMNS_MEDIDA2 =  
 
-                VAR TABELA_VIRTUAL = ADDCOLUMNS( 
-
-                                                VALUES(dProdutos[CATEGORIA_PRODUTO]), 
-
-                                                "Faturamento",[Faturamento], 
-
-                                                "Margem_prod",[Margem%], 
-
-                                                "qtde_virtual",[#QtdVendida] 
-
-                                        ) 
-
-                VAR RESULT = SUMX(TABELA_VIRTUAL, 
-
-                                IF([Margem_prod]>0.38,[qtde_virtual],0) 
-
-                                 
-
-                    ) 
-
- 
-
-                RETURN RESULT 
+		                VAR TABELA_VIRTUAL = ADDCOLUMNS( 
+		
+		                                                VALUES(dProdutos[CATEGORIA_PRODUTO]), 
+		
+		                                                "Faturamento",[Faturamento], 
+		
+		                                                "Margem_prod",[Margem%], 
+		
+		                                                "qtde_virtual",[#QtdVendida] 
+		
+		                                        ) 
+		
+		                VAR RESULT = SUMX(TABELA_VIRTUAL, 
+		
+		                                IF([Margem_prod]>0.38,[qtde_virtual],0) 
+		
+		                                 
+		
+		                    ) 
+		
+		 
+		
+		                RETURN RESULT 
 
  
 43 - SUMMARIZE 
@@ -656,22 +653,22 @@ Modelagem – Inserir Nova tabela
 Digite: 
 
  
-
-SUMMARIZE1 =  
-
-            SUMMARIZE(fVendas, 
-
-            fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
+		
+		SUMMARIZE1 =  
+		
+		            SUMMARIZE(fVendas, 
+		
+		            fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
 
  
 
-SUMMARIZE2 =  
-
-            SUMMARIZE(fVendas, 
-
-            fVendas[CODIGO_CENTRO_DISTRIBUICAO], 
-
-            fVendas[CODIGO_CAT]) 
+		SUMMARIZE2 =  
+		
+		            SUMMARIZE(fVendas, 
+		
+		            fVendas[CODIGO_CENTRO_DISTRIBUICAO], 
+		
+		            fVendas[CODIGO_CAT]) 
 
  
 
@@ -679,37 +676,37 @@ Como medida
 
 Média da quantidade de produtos vendidos por dia, visão por cliente 
 
-SUMMARIZE =  
-
-                    var produto = SUMMARIZE( 
-
-                        fVendas, 
-
-                        dProdutos[CATEGORIA_PRODUTO], 
-
-                        dimCalendario[Date] 
-
-                    ) 
-
-                    var produtos_diarios = 
-
-                        ADDCOLUMNS(produto, 
-
-                                "qtde",CALCULATE(sum(fVendas[QUANTIDADE])) 
-
-                                 ) 
-
-                    var result = 
-
-                        AVERAGEX( 
-
-                            produtos_diarios,[qtde] 
-
-                            ) 
-
-                     
-
-                    return result 
+			SUMMARIZE =  
+	
+	                    var produto = SUMMARIZE( 
+	
+	                        fVendas, 
+	
+	                        dProdutos[CATEGORIA_PRODUTO], 
+	
+	                        dimCalendario[Date] 
+	
+	                    ) 
+	
+	                    var produtos_diarios = 
+	
+	                        ADDCOLUMNS(produto, 
+	
+	                                "qtde",CALCULATE(sum(fVendas[QUANTIDADE])) 
+	
+	                                 ) 
+	
+	                    var result = 
+	
+	                        AVERAGEX( 
+	
+	                            produtos_diarios,[qtde] 
+	
+	                            ) 
+	
+	                     
+	
+	                    return result 
 
 44 - CROSSJOIN 
 
@@ -719,63 +716,63 @@ Como tabela
 
 CROSSJOIN =  
 
-                CROSSJOIN( 
-
-                    VALUES(dProdutos[CATEGORIA_PRODUTO]), 
-
-                    VALUES(fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
-
-                ) 
+	                CROSSJOIN( 
+	
+	                    VALUES(dProdutos[CATEGORIA_PRODUTO]), 
+	
+	                    VALUES(fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
+	
+	                ) 
 
 CROSSJOIN_BUDGET =  
 
-                    ADDCOLUMNS(CROSSJOIN( 
-
-                        VALUES(dimCalendario[NOMEMES_ANO]), 
-
-                        VALUES(fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
-
-                    ), 
-
-                    "Budget",IF(ISBLANK([SamePeriodLastYear]),[#faturamento],[SamePeriodLastYear]*1.02) 
-
-                    ) 
+	                    ADDCOLUMNS(CROSSJOIN( 
+	
+	                        VALUES(dimCalendario[NOMEMES_ANO]), 
+	
+	                        VALUES(fVendas[CODIGO_CENTRO_DISTRIBUICAO]) 
+	
+	                    ), 
+	
+	                    "Budget",IF(ISBLANK([SamePeriodLastYear]),[#faturamento],[SamePeriodLastYear]*1.02) 
+	
+	                    ) 
 
 Come Medida 
 
  
 
-CROSS_JOIN_FAT =  
-
-                VAR TABELA_VIRTUAL =  
-
-                        CROSSJOIN( 
-
-                                VALUES(dProdutos[Classificao_IF]), 
-
-                                VALUES(dCidades[ESTADO]) 
-
-                        ) 
-
-                VAR TABELA_FILTRADA =  
-
-                                FILTER(TABELA_VIRTUAL, 
-
-                                    OR(dProdutos[Classificao_IF]="Class A", 
-
-                                    dCidades[ESTADO]="Rio de Janeiro" 
-
-                                    ) 
-
-                                ) 
-
-                VAR RESULT =  
-
-                            CALCULATE([Faturamento],TABELA_FILTRADA) 
-
- 
-
-             RETURN RESULT 
+	CROSS_JOIN_FAT =  
+	
+	                VAR TABELA_VIRTUAL =  
+	
+	                        CROSSJOIN( 
+	
+	                                VALUES(dProdutos[Classificao_IF]), 
+	
+	                                VALUES(dCidades[ESTADO]) 
+	
+	                        ) 
+	
+	                VAR TABELA_FILTRADA =  
+	
+	                                FILTER(TABELA_VIRTUAL, 
+	
+	                                    OR(dProdutos[Classificao_IF]="Class A", 
+	
+	                                    dCidades[ESTADO]="Rio de Janeiro" 
+	
+	                                    ) 
+	
+	                                ) 
+	
+	                VAR RESULT =  
+	
+	                            CALCULATE([Faturamento],TABELA_FILTRADA) 
+	
+	 
+	
+	             RETURN RESULT 
 
  
 45 - ROWS 
@@ -785,7 +782,7 @@ Criar uma tabela Manual
 
 Modelagem – Nova Tabela 
 
-ROW("Nome", "Susie","Idade","40","Cidade","Campinas") 
+	ROW("Nome", "Susie","Idade","40","Cidade","Campinas") 
 
  
 
@@ -793,26 +790,26 @@ ROW("Nome", "Susie","Idade","40","Cidade","Campinas")
 
 Unindo duas tabelas – mesmo efeito que a mesclagem acrescentar tabela do Power Query 
 
-Tabela Manual =  
-
-UNION( 
-
-            ROW("Nome", "Susie","Idade","40","Cidade","Campinas"), 
-
-            ROW("Nome", "Bento","Idade","25","Cidade","Itatinga") 
-
-            ) 
+		Tabela Manual =  
+		
+		UNION( 
+		
+		            ROW("Nome", "Susie","Idade","40","Cidade","Campinas"), 
+		
+		            ROW("Nome", "Bento","Idade","25","Cidade","Itatinga") 
+		
+		            ) 
 
  
 47 - CALCULATETABLE 
 
 Todas as funções que são combinadas com a CALCULATE podem ser usadas com a CALCULATETABLE 
 
-Como tabela calculada 
-
-CALCULATETABLE =  
-
-                CALCULATETABLE(fVendas,fVendas[CODIGO_CENTRO_DISTRIBUICAO]="SULX301") 
+		Como tabela calculada 
+		
+		CALCULATETABLE =  
+		
+		                CALCULATETABLE(fVendas,fVendas[CODIGO_CENTRO_DISTRIBUICAO]="SULX301") 
 
  
 
@@ -820,65 +817,65 @@ CALCULATETABLE =
 
 Contagem de produtos distintos em relação ao mês anterior. Avalia o mês corrente e verifica quantos dos produtos distintos do mês selecionado foram também comprados no mês anterior. 
 
-INTERSECT =  
-
-            VAR vcomparacao = INTERSECT(VALUES(fVendas[CODIGO_CAT]), 
-
-                CALCULATETABLE(VALUES(fVendas[CODIGO_CAT]), 
-
-                                DATEADD(dimCalendario[Date],-1,MONTH) 
-
-                ) 
-
-            ) 
-
-            var vresult = COUNTROWS(vcomparacao) 
-
-            return vresult 
+		INTERSECT =  
+		
+		            VAR vcomparacao = INTERSECT(VALUES(fVendas[CODIGO_CAT]), 
+		
+		                CALCULATETABLE(VALUES(fVendas[CODIGO_CAT]), 
+		
+		                                DATEADD(dimCalendario[Date],-1,MONTH) 
+		
+		                ) 
+		
+		            ) 
+		
+		            var vresult = COUNTROWS(vcomparacao) 
+		
+		            return vresult 
 
 49 - EXCEPT 
 
 Contagem de produtos distintos em relação ao mês anterior. Avalia o mês corrente e verifica quantos dos produtos distintos foram comprados no mês corrente e não foram comprados no mês passado. 
 
-EXCEPT =  
-
-            VAR vcomparacao = EXCEPT(VALUES(fVendas[CODIGO_CAT]), 
-
-                CALCULATETABLE(VALUES(fVendas[CODIGO_CAT]), 
-
-                                DATEADD(dimCalendario[Date],-1,MONTH) 
-
-                ) 
-
-            ) 
-
-            var vresult = COUNTROWS(vcomparacao) 
-
-            return vresult 
+		EXCEPT =  
+		
+		            VAR vcomparacao = EXCEPT(VALUES(fVendas[CODIGO_CAT]), 
+		
+		                CALCULATETABLE(VALUES(fVendas[CODIGO_CAT]), 
+		
+		                                DATEADD(dimCalendario[Date],-1,MONTH) 
+		
+		                ) 
+		
+		            ) 
+		
+		            var vresult = COUNTROWS(vcomparacao) 
+		
+		            return vresult 
 
  
 
 Usando a Except para contar novos clientes em relação ao ano anterior 
 
-NOVOS_CLIENTES =  
-
-            var vano = max(dimCalendario[ANO]) 
-
-            var vclientes = VALUES(fVendas[CODIGO_CLIENTE]) 
-
-            var vtodos_clientes =  
-
-                            CALCULATETABLE( 
-
-                                        VALUES(fVendas[CODIGO_CLIENTE]), 
-
-                                        dimCalendario[ANO]<vano 
-
-                            ) 
-
-            var vresult = COUNTROWS(EXCEPT(vclientes,vtodos_clientes)) 
-
-            return vresult 
+		NOVOS_CLIENTES =  
+		
+		            var vano = max(dimCalendario[ANO]) 
+		
+		            var vclientes = VALUES(fVendas[CODIGO_CLIENTE]) 
+		
+		            var vtodos_clientes =  
+		
+		                            CALCULATETABLE( 
+		
+		                                        VALUES(fVendas[CODIGO_CLIENTE]), 
+		
+		                                        dimCalendario[ANO]<vano 
+		
+		                            ) 
+		
+		            var vresult = COUNTROWS(EXCEPT(vclientes,vtodos_clientes)) 
+		
+		            return vresult 
 
  50 - GENERATESERIES 
 
@@ -895,26 +892,26 @@ A tabela gerada saíra de acordo com os intervalos que foram digitados em NOVO P
 
 Necessário criar medida para Simular o Custo 
 
-#SimulaçãoCusto =  
-
-            var custo =SUMX(fVendas,fVendas[PRECO_CUSTO_UNITARIO]*(1+Custo[Valor Custo])*fVendas[QUANTIDADE]) 
-
-            return  custo 
+	#SimulaçãoCusto =  
+	
+	            var custo =SUMX(fVendas,fVendas[PRECO_CUSTO_UNITARIO]*(1+Custo[Valor Custo])*fVendas[QUANTIDADE]) 
+	
+	            return  custo 
 
  
 Necessário criar medida para Simular a Margem 
 
  
-#SimulaçãoMargem = var custo = [#SimulaçãoCusto] 
-
-                   var receita = sum(fVendas[RECEITA]) 
-
-                   var lucro = receita - custo 
-
-                   var margem = divide(lucro,receita) 
-
- 
-                  RETURN margem 
+	#SimulaçãoMargem = var custo = [#SimulaçãoCusto] 
+	
+	                   var receita = sum(fVendas[RECEITA]) 
+	
+	                   var lucro = receita - custo 
+	
+	                   var margem = divide(lucro,receita) 
+	
+	 
+	                  RETURN margem 
 
  
 
@@ -931,7 +928,7 @@ Expressão - [Faturamento]
 [Order] - DESC – para classificar do maior para o menor, ou ASC para classificar do menor para o maior 
 [Ties] - Dense ou Skip – Item não é obrigatório - quando há empate uma opção apresenta o número subsequente outra opção não. 
 
-RANKX_1 = RANKX(ALL(dClientes[Nome_Cliente]),[Faturamento],,DESC) 
+		RANKX_1 = RANKX(ALL(dClientes[Nome_Cliente]),[Faturamento],,DESC) 
 
  52 - TOPN 
 
@@ -945,43 +942,43 @@ OrderbyExpression – A ordenação será feita com base em que medida
 [Order] - Crescente ou decrescente 
 
  
-TOPN = TOPN(5,dProdutos,[#faturamento],DESC) 
+		TOPN = TOPN(5,dProdutos,[#faturamento],DESC) 
 
 Como medida 
 
 Ver o faturamento considerando apenas os top5 produtos 
 
-TOPN =  
-
-        VAR vtop5 =TOPN(5,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
-
-        VAR vtopfaturamento = CALCULATE([Faturamento],vtop5) 
-
-        RETURN vtopfaturamento 
+		TOPN =  
+		
+		        VAR vtop5 =TOPN(5,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
+		
+		        VAR vtopfaturamento = CALCULATE([Faturamento],vtop5) 
+		
+		        RETURN vtopfaturamento 
 
   
 
 Consegue ver a representatividade dos TOP3 
 
-TOPN3_% =  
-
-        VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
-
-        VAR vtopfaturamento = CALCULATE([Faturamento],vtop3) 
-
-        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
+		TOPN3_% =  
+		
+		        VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
+		
+		        VAR vtopfaturamento = CALCULATE([Faturamento],vtop3) 
+		
+		        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
 
  
 
 Ou 
 
-TOPN3_% =  
-
-        VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
-
-        VAR vtopfaturamento = SUMX(vtop3,[Faturamento]) 
-
-        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
+		TOPN3_% =  
+		
+		        VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
+		
+		        VAR vtopfaturamento = SUMX(vtop3,[Faturamento]) 
+		
+		        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
 
  
 
@@ -997,7 +994,7 @@ Foi criada uma tabela Calculada com a seguinte função
 
  
 
-TopClientes = GENERATESERIES(0, 20, 1) 
+	TopClientes = GENERATESERIES(0, 20, 1) 
 
  
 
@@ -1005,15 +1002,15 @@ Faça a seguinte alteração:
 
  
 
-TopClientes = GENERATESERIES(0, COUNTROWS(dProdutos), 1) 
+	TopClientes = GENERATESERIES(0, COUNTROWS(dProdutos), 1) 
  
 
 Volte então para a função TOPN que você criou e coloque o nome da medida do parâmetro que foi criada 
 
-VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
-
-        VAR vtopfaturamento = SUMX(vtop3,[Faturamento]) 
-
-        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
+		VAR vtop3 =TOPN(3,VALUES(fVendas[CODIGO_CAT]),[Faturamento],DESC) 
+		
+		        VAR vtopfaturamento = SUMX(vtop3,[Faturamento]) 
+		
+		        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
 
 
