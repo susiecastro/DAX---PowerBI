@@ -59,19 +59,19 @@ Nome tabela[procura] – procura resultados da tabela que está relacionada para
 Função só funciona na tabela fato que *(muitos) no relacionamento de 1(um) com a tabela dimensão. 
  
 
-10 - RELATEDTABLE 
+9 - RELATEDTABLE 
 
 Funciona somente com relacionamento ativo. 
 
 A função na tabela dimensão funcionará dentro de outra função 
 
-COUNTROWS(RELATEDTABLE(fVendas)) 
+	COUNTROWS(RELATEDTABLE(fVendas)) 
  
- 11 - LOOKUPVALUE 
+ 10 - LOOKUPVALUE 
 
 Pode trazer informação de tabela não relacionada 
-
-12 - LOOCKUPVALUE (dloja[NomeLoja],dloja[CodigoLoja], fVendas[CodLoja]) 
+	
+ 	LOOCKUPVALUE (dloja[NomeLoja],dloja[CodigoLoja], fVendas[CodLoja]) 
  
 
 Dloja[Nomeloja] – Nome que você quer buscar o resultado, coluna retorno. 
@@ -79,127 +79,131 @@ dLoja[Codigo_Loja] – qual coluna você está pesquisando.
 fVendas[CodLoja] – Valor procurado 
  
 
-13 - SWITCH 
+11 - SWITCH 
 
 Para textos 
 
 Condição para textos 
 
-= SWITCH(dFunciionario[Departamento], 
+	= SWITCH(dFunciionario[Departamento], 
 
-“Loja 04”, “Venda Loja 04”, 
+		“Loja 04”, “Venda Loja 04”, 
 
-“Loja 03”, “Venda Loja 03”, 
+		“Loja 03”, “Venda Loja 03”, 
 
-“Loja 02”, “Venda Loja 02”, 
+		“Loja 02”, “Venda Loja 02”, 
 
-“Loja 01”, “Venda Loja 01”) 
+		“Loja 01”, “Venda Loja 01”) 
  
 
 Condição para números 
 
-= SWITCH(TRUE(), 
+	= SWITCH(TRUE(), 
 
-Dfuncionario[índice_satisfacao]<=2,”Atenção”, 
+		Dfuncionario[índice_satisfacao]<=2,”Atenção”, 
 
-Dfuncionario[índice_satisfacao]<4,”Ok”,”Satisfeito”)) 
+		Dfuncionario[índice_satisfacao]<4,”Ok”,”Satisfeito”)
+		) 
 
  
 
-14 - AND 
+12 - AND 
 
 Função permite colocar duas condições em uma condicional ou critério de filtro exemplo. Aceita somente duas condições, diferente de utilizar o && 
 
-SWITCH(TRUE(), 
+		SWITCH(TRUE(), 
 
-AND(dfuncionario[índice]<=2,dfuncionario[performance]=”Abaixo do Esperado”), “Entrar em Contato)) 
+			AND(dfuncionario[índice]<=2,dfuncionario[performance]=”Abaixo do Esperado”), “Entrar em Contato)
+			) 
 
 Usando o && 
 
-dfuncionario[índice]<= && dfuncionario[performance]=”Abaixo do Esperado”&& dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
+			dfuncionario[índice]<= && dfuncionario[performance]=”Abaixo do Esperado”&& dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
  
-15 - OR 
+13 - OR 
 
 Função permite colocar duas condições em uma condicional ou critério de filtro exemplo. Aceita somente duas condições, diferente de utilizar o || 
 
-SWITCH(TRUE(), 
+		SWITCH(TRUE(), 
 
-OR(dfuncionario[índice]<=2,dfuncionario[performance]=”Abaixo do Esperado”), “Entrar em Contato)) 
+			OR(dfuncionario[índice]<=2,dfuncionario[performance]=”Abaixo do Esperado”), “Entrar em Contato)
+			) 
 
 Usando o && 
 
-dfuncionario[índice]<= || dfuncionario[performance]=”Abaixo do Esperado”|| dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
+			dfuncionario[índice]<= || dfuncionario[performance]=”Abaixo do Esperado”|| dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
 
- 16 - HASONEVALUE 
+ 14 - HASONEVALUE 
 
 Quando você quer retornar um nome 
 
-IF(HASONEVALUE(dclientes[Nome_Cliente]), 
-VALUES(dClientes[Nome_Cliente]),””) 
+		IF(HASONEVALUE(dclientes[Nome_Cliente]), 
+			VALUES(dClientes[Nome_Cliente]),””
+			) 
 
-17 - SELECTEDVALUE 
+15 - SELECTEDVALUE 
 
 Alternativa para utilizar ao invés da IF com HASONEVALUE 
 
-SELECTEDVALUE(dClientes[Nome_cliente],””) 
+		SELECTEDVALUE(dClientes[Nome_cliente],””) 
 
- 18 - TÍTULO DINÂMICO PARA GRÁFICOS 
+ 16 - TÍTULO DINÂMICO PARA GRÁFICOS 
 
-TÍTULO_DINAMICO = “Faturamento de “& SELECTEDVALUE(fVendas[Codigo_centro_Distribuicao],”Vários). 
+		TÍTULO_DINAMICO = “Faturamento de “& SELECTEDVALUE(fVendas[Codigo_centro_Distribuicao],”Vários). 
 
 Se selecionar vários itens aparecerá no título “Faturamento de Vários” 
 
 Título que aparecerá vários itens selecionados 
 
-VAR CENTROS = CONCATENATEX( 
-VALUES (fVendas[Codigo_Centro_Distribuicao), 
+		VAR CENTROS = CONCATENATEX( 
+			VALUES (fVendas[Codigo_Centro_Distribuicao), 
 
-fVendas[Codigo_centro_Distribuicao],”,”, 
-fVendas[Codigo_Centro_Distribuicao], 
-ASC 
+					fVendas[Codigo_centro_Distribuicao],”,”, 
+					fVendas[Codigo_Centro_Distribuicao], 
+					ASC 
 
-) 
+					) 
 
 Return “Faturamento de “ & centros 
 
-19 - TREATAS 
+17 - TREATAS 
 
 Capaz de criar um relacionamento virtual – não precisa de relacionamento inativo como USERELATIONSHIP 
 
- TREATAS_FATURAMENTO_BUDGET =  
+		 TREATAS_FATURAMENTO_BUDGET =  
+		
+		            CALCULATE(SUM(CROSSJOIN_BUDGET[Budget]), 
+		
+		                        TREATAS(VALUES(dimCalendario[NOMEMES_ANO]), 
+		
+		                            CROSSJOIN_BUDGET[NOMEMES_ANO] 
+		
+		                        ) 
+		
+		            ) 
 
-            CALCULATE(SUM(CROSSJOIN_BUDGET[Budget]), 
-
-                        TREATAS(VALUES(dimCalendario[NOMEMES_ANO]), 
-
-                            CROSSJOIN_BUDGET[NOMEMES_ANO] 
-
-                        ) 
-
-            ) 
-
-20  - CALCULATE
+18  - CALCULATE
 
 A única função capaz de mudar um contexto de filtro existente 
 
- ProdutosClasseA = CALCULATE( 
-			[margem%],dProdutos[Classificacao]=”Class A”) 
+		 ProdutosClasseA = CALCULATE( 
+					[margem%],dProdutos[Classificacao]=”Class A”) 
  
-FaturamentoEmpresa2 = CALCULATE( 
-				[faturamento],NomedoCliente=”Empresa2”) 
+		FaturamentoEmpresa2 = CALCULATE( 
+						[faturamento],NomedoCliente=”Empresa2”) 
+		 
  
- 
-FaturamentoClasseAB = CALCULATE([faturamento], 
-			dProdutos [Classificacao] = “Class A” || 
-                                          dProdutos [Classificacao] = “Class B”) 
+		FaturamentoClasseAB = CALCULATE([faturamento], 
+					dProdutos [Classificacao] = “Class A” || 
+		                                          dProdutos [Classificacao] = “Class B”) 
  
 
 CALCULATE diversos filtros 
  
 Diversos filtros em um campo 
 
-FaturamentoEmpresasX =CALCULATE ([faturamento], 
-NomedoCliente IN {“Empresa 1”, “Empresa 4”, “Empresa 6”, “Empresa 8”}) 
+		FaturamentoEmpresasX =CALCULATE ([faturamento], 
+		NomedoCliente IN {“Empresa 1”, “Empresa 4”, “Empresa 6”, “Empresa 8”}) 
  
 Todo argumento passado para uma CALCULATE, vai ser uma tabela ou um modificador de contexto 
 
@@ -207,18 +211,18 @@ Representatividade % com CALCULATE
 
 Primeiro crie a medida do Faturamento 
 
-Faturamento = SUM(fVendas[Receita]) 
+		Faturamento = SUM(fVendas[Receita]) 
 
 Calcule o Faturamento Total 
  
-Faturamento_total = CALCULATE (Faturamento], 
-                                                  ALLSELECETD(fVendas) 
-                                               ) 
+		Faturamento_total = CALCULATE (Faturamento], 
+		                                                  ALLSELECETD(fVendas) 
+		                                               ) 
  
 
 Calcule a representatividade 
  
-Faturamento % = DIVIDE([Faturamento],[Faturamento_total]) 
+		Faturamento % = DIVIDE([Faturamento],[Faturamento_total]) 
  
 
 
@@ -226,32 +230,34 @@ FUNÇÕES QUE TRABALHAM COM A CALCULATE
 
  
 
-21 - KEEPFILTERS
+19 - KEEPFILTERS
 
 Evita a sobreposição de contexto. 
 A função não sobrepõe os filtros 
-FaturamentoAB = CALCULATE([faturamento], 
+		FaturamentoAB = CALCULATE([faturamento], 
 
-KEEPFILTERS( 
-				dProdutos[Classificacao] IN {“CLASS A”,”CLASS B”} 
+					KEEPFILTERS( 
+					dProdutos[Classificacao] IN {“CLASS A”,”CLASS B”} 
+						)
+					)
 Exemplo:
     ![image](https://github.com/user-attachments/assets/d4b30b85-7bd0-48fe-8a1e-6557377dc404)
 
-22 - USERELATIONSHIP 
+20 - USERELATIONSHIP 
 
 Função é utilizada para ativar relacionamentos inativos, e eles são ativados somente no momento que a função está sendo chamada. 
 
 É necessário que tenha um relacionamento inativo – linha tracejada 
 
  
-QTDE_ENTREGA = CALCULATE( 
-				COUNTROWS(fVendas), 
-					USERLATIONSHIP(dCalendario[Date], 
-					fVendas[DataEntrega]) 
-				) 
+			QTDE_ENTREGA = CALCULATE( 
+							COUNTROWS(fVendas), 
+								USERLATIONSHIP(dCalendario[Date], 
+								fVendas[DataEntrega]) 
+							) 
 
  
-23 - CROSSFILTER 
+21 - CROSSFILTER 
 
 Crossfilter consegue modificar a estrutura de relacionamento. Podemos passar um argumento de direção de um relacionamento ou desativar um relacionamento ativo. 
 
@@ -259,14 +265,14 @@ Não é possível ativar relacionamento com esta função exemplo:
 
  
 
-QTDE_ESTADOS =  
-		CALCULATE( 
-			DISTINCTCOUNT(dcidades[Estado]), 
-                CROSSFILTER(fVendas[Cidade_Destino],dCidades[Codigo Cidade], 
-                                      Both) 
-                         ) 
+			QTDE_ESTADOS =  
+					CALCULATE( 
+						DISTINCTCOUNT(dcidades[Estado]), 
+			                CROSSFILTER(fVendas[Cidade_Destino],dCidades[Codigo Cidade], 
+			                                      Both) 
+			                         ) 
 
-24 - ALL_SELECT 
+22 - ALL_SELECT 
 
 Aceita filtros externos de caixas de Seleção/Datas/ Listas. 
 
@@ -274,11 +280,11 @@ Fora do visual tabela
 
 Exemplo: 
 
-Faturamento Total = CALCULATE([faturamento], 
-                                     ALL_SELECT (fVendas) 
-                                     ) 
+		Faturamento Total = CALCULATE([faturamento], 
+		                                     ALL_SELECT (fVendas) 
+		                                     ) 
 
-25 - VARIÁVEIS – Arquivo Variáveis 
+23 - VARIÁVEIS – Arquivo Variáveis 
 
 Variáveis servem para duas coisas: 
 
@@ -288,12 +294,12 @@ Variáveis servem para duas coisas:
 
  Exemplo: 
 
-Variável margem% =  
-       VAR faturamento = sum(fvendas[Receita]) 
-       VAR custo = sumx(fvendas, fvendas[qtd]*fvendas[custo]) 
-       VAR margem = vfaturamento – vcusto 
-       VAR vresultado = divide(margem,faturamento) 
-       RETURN vresultado 
+		Variável margem% =  
+		       VAR faturamento = sum(fvendas[Receita]) 
+		       VAR custo = sumx(fvendas, fvendas[qtd]*fvendas[custo]) 
+		       VAR margem = vfaturamento – vcusto 
+		       VAR vresultado = divide(margem,faturamento) 
+		       RETURN vresultado 
 
 
 
@@ -303,7 +309,7 @@ Sempre desativar do PowerBI Inteligência de Dados temporais
 
 Dentro de Arquivo Opções – Global e Opções do arquivo atual 
 
-26 - TABELA CALENDÁRIO 
+24 - TABELA CALENDÁRIO 
 
 Ir em Modelagem – Nova Tabela 
 dimCalendario =  
