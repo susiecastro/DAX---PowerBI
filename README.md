@@ -416,6 +416,7 @@ Se fosse 2 meses anteriores a função seria:
 		     DATEADD(dCalendario[Date],-2,Month) 
 
 Para pegar faturamento do ano anterior: 
+ - Deste modo o faturamento do ano anterior ficará acumulado.
 
 		CALCULATE([Faturamento], 
 		
