@@ -4,25 +4,25 @@ Site para Formatar as funções DAX – indentar
 
 https://www.daxformatter.com/ 
 
-1 - COUNT 
+<B>1 - COUNT </B>
 Função não conta número de linhas vazias 
 
-2 - COUNTROWS 
+<B>2 - COUNTROWS </B>
 
 Função conta linhas vazias 
 
-3 - DISTINCTCOUNT 
+<B>3 - DISTINCTCOUNT </B>
 
 Conta valores distintos – Conta valores em branco 
 
-4 - DISTINCTCOUNTNOBLANK 
+<B>4 - DISTINCTCOUNTNOBLANK </B>
 
 Não conta valores em branco 
 
-5 - COUNTBLANK 
+<B>5 - COUNTBLANK </B>
 Retorna quantos valores em branco há na coluna 
 
-6 - ALL 
+<b>6 - ALL </B>
 
 Serve para retornar toda tabela em uma nova tabela ou coluna. 
 
@@ -36,7 +36,7 @@ Ou
 
 Função muito utilizada em combinação com a CALCULATE. 
 
-7 - FILTER 
+<B>7 - FILTER </B>
 
 Retorna uma tabela que foi filtrada ou Auxilia no Filtro. 
 
@@ -49,7 +49,7 @@ Ou como Auxiliar
 
 	COUNTROWS(FILTER(Tabela, tabela[coluna]=”Criterio”)) 
 
-8 - RELATED (funciona com criação de colunas) 
+<B>8 - RELATED (funciona com criação de colunas) </B>
 
 Precisa do relacionamento ativo para funcionar. Cria uma coluna/similar ao PROCV 
 
@@ -59,7 +59,7 @@ Nome tabela[procura] – procura resultados da tabela que está relacionada para
 Função só funciona na tabela fato que *(muitos) no relacionamento de 1(um) com a tabela dimensão. 
  
 
-9 - RELATEDTABLE 
+<B>9 - RELATEDTABLE </B>
 
 Funciona somente com relacionamento ativo. 
 
@@ -67,7 +67,7 @@ A função na tabela dimensão funcionará dentro de outra função
 
 	COUNTROWS(RELATEDTABLE(fVendas)) 
  
- 10 - LOOKUPVALUE 
+<B> 10 - LOOKUPVALUE </B>
 
 Pode trazer informação de tabela não relacionada 
 	
@@ -79,7 +79,7 @@ dLoja[Codigo_Loja] – qual coluna você está pesquisando.
 fVendas[CodLoja] – Valor procurado 
  
 
-11 - SWITCH 
+<B>11 - SWITCH </B>
 
 Para textos 
 
@@ -107,7 +107,7 @@ Condição para números
 
  
 
-12 - AND 
+<B>12 - AND </B>
 
 Função permite colocar duas condições em uma condicional ou critério de filtro exemplo. Aceita somente duas condições, diferente de utilizar o && 
 
@@ -120,7 +120,7 @@ Usando o &&
 
 			dfuncionario[índice]<= && dfuncionario[performance]=”Abaixo do Esperado”&& dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
  
-13 - OR 
+<B>13 - OR </B>
 
 Função permite colocar duas condições em uma condicional ou critério de filtro exemplo. Aceita somente duas condições, diferente de utilizar o || 
 
@@ -133,7 +133,7 @@ Usando o &&
 
 			dfuncionario[índice]<= || dfuncionario[performance]=”Abaixo do Esperado”|| dfuncionarios[TempoEmpresa]<=2, “Entrar em Contato)) 
 
- 14 - HASONEVALUE 
+ <B>14 - HASONEVALUE </B>
 
 Quando você quer retornar um nome 
 
@@ -141,13 +141,13 @@ Quando você quer retornar um nome
 			VALUES(dClientes[Nome_Cliente]),””
 			) 
 
-15 - SELECTEDVALUE 
+<B>15 - SELECTEDVALUE </B>
 
 Alternativa para utilizar ao invés da IF com HASONEVALUE 
 
 		SELECTEDVALUE(dClientes[Nome_cliente],””) 
 
- 16 - TÍTULO DINÂMICO PARA GRÁFICOS 
+ <B>16 - TÍTULO DINÂMICO PARA GRÁFICOS </B>
 
 		TÍTULO_DINAMICO = “Faturamento de “& SELECTEDVALUE(fVendas[Codigo_centro_Distribuicao],”Vários). 
 
@@ -166,7 +166,7 @@ Título que aparecerá vários itens selecionados
 
 Return “Faturamento de “ & centros 
 
-17 - TREATAS 
+<B>17 - TREATAS </B>
 
 Capaz de criar um relacionamento virtual – não precisa de relacionamento inativo como USERELATIONSHIP 
 
@@ -182,7 +182,7 @@ Capaz de criar um relacionamento virtual – não precisa de relacionamento inat
 		
 		            ) 
 
-18  - CALCULATE
+<B>18  - CALCULATE</B>
 
 A única função capaz de mudar um contexto de filtro existente 
 
@@ -230,7 +230,7 @@ FUNÇÕES QUE TRABALHAM COM A CALCULATE
 
  
 
-19 - KEEPFILTERS
+<B>19 - KEEPFILTERS</B>
 
 Evita a sobreposição de contexto. 
 A função não sobrepõe os filtros 
@@ -243,7 +243,7 @@ A função não sobrepõe os filtros
 Exemplo:
     ![image](https://github.com/user-attachments/assets/d4b30b85-7bd0-48fe-8a1e-6557377dc404)
 
-20 - USERELATIONSHIP 
+<B>20 - USERELATIONSHIP </B>
 
 Função é utilizada para ativar relacionamentos inativos, e eles são ativados somente no momento que a função está sendo chamada. 
 
@@ -257,7 +257,7 @@ Função é utilizada para ativar relacionamentos inativos, e eles são ativados
 							) 
 
  
-21 - CROSSFILTER 
+<B>21 - CROSSFILTER </B>
 
 Crossfilter consegue modificar a estrutura de relacionamento. Podemos passar um argumento de direção de um relacionamento ou desativar um relacionamento ativo. 
 
@@ -272,7 +272,7 @@ Não é possível ativar relacionamento com esta função exemplo:
 			                                      Both) 
 			                         ) 
 
-22 - ALL_SELECT 
+<B>22 - ALL_SELECT </B>
 
 Aceita filtros externos de caixas de Seleção/Datas/ Listas. 
 
@@ -284,7 +284,7 @@ Exemplo:
 		                                     ALL_SELECT (fVendas) 
 		                                     ) 
 
-23 - VARIÁVEIS – Arquivo Variáveis 
+<B>23 - VARIÁVEIS – Arquivo Variáveis </B>
 
 Variáveis servem para duas coisas: 
 
@@ -309,7 +309,7 @@ Sempre desativar do PowerBI Inteligência de Dados temporais
 
 Dentro de Arquivo Opções – Global e Opções do arquivo atual 
 
-24 - TABELA CALENDÁRIO 
+<B>24 - TABELA CALENDÁRIO </B>
 
 Ir em Modelagem – Nova Tabela 
 dimCalendario =  
@@ -361,7 +361,7 @@ Clique em Marcar como tabela Calendario e clique em Date
 Exemplo:
 ![image](https://github.com/user-attachments/assets/c677b248-fbbb-4e95-a007-5d726ab44a71)
 
-27 - DATESYTD 
+<B>25 - DATESYTD </B>
 
 Faz o acumulado do ano e começa com o saldo de janeiro 
 
@@ -373,21 +373,21 @@ FATURAMENTO_ACUMULADO = CALCULATE(
 
 DatesQTD e DatesMTD – Funcionam de maneira parecidas, mudando o intervalo para trimestre e mês respectivamente. 
 
-28 - TOTALYTD 
+<B>26 - TOTALYTD </B>
 
 	TotalYTD([faturamento],dCalendario[Date]) 
  
 Por traz dos panos ela já possui a CALCULATE – está na função de maneira implicita 
 
  
-29 - SAMEPERIODLASTYEAR 
+<B>27 - SAMEPERIODLASTYEAR </B>
 
 SAMEPERIOD =  
 
 		CALCULATE([faturamento], 
 				SAMEPERIODLASTYEAR(dcalendario[Date]) 
  
-30 - YoY% 
+<B>28 - YoY% </B>
  
 
 		Divide = ([faturamento]-[sameperiod],[sameperiod]) 
@@ -397,7 +397,7 @@ Retorna o percentual de diferença do ano anterior.
 
  
 
-31 - DATEADD 
+<B>29 - DATEADD</B>
 
 Função pode pegar faturamento de acordo com o período que você especificar 
 
@@ -426,7 +426,7 @@ Este exemplo tem o mesmo comportamento do SAMEPERIODLASTYEAR
 
  
 
-32 - PREVIOUSMONTH 
+<B>30- PREVIOUSMONTH </B>
 
 		CALCULATE ([Faturamento], 
 		PREVIOUSMONTH(dCalendario[Date])) 	
@@ -434,14 +434,14 @@ Este exemplo tem o mesmo comportamento do SAMEPERIODLASTYEAR
 A função não se adapta ao contexto de filtro Dia, como a DATEADD 
 
  
-33 - PARELLELPERIOD 
+<B>31 - PARELLELPERIOD</B>
 
 		CALCULATE([Faturamento], 
 		  PARALLELPERIOD( 
 		    dCalendario[Date],-1,MONTH)
 		  ) 	
 
- 34 - DATESBETWEEN 
+ <B>32 - DATESBETWEEN </B>
 
 		CALCULATE([Faturamento], 
 		
@@ -454,7 +454,7 @@ A função não se adapta ao contexto de filtro Dia, como a DATEADD
 
 O cálculo retorna o valor acumulado dos últimos 30 dias. 
 
-35 - DATESINPERIOD 
+<B>33 - DATESINPERIOD</B>
 
 		CALCULATE([Faturamento], 
 		      DATESINPERIOD(dCalendario[Date], 
@@ -470,7 +470,7 @@ Se alterar o -30 e o Day, muda o período do cálculo.
 No exemplo ele pega os últimos 30 dias e faz o acumulado. 
 
  
-36 - CÁLCULO MÉDIA MÓVEL 
+<B>34 - CÁLCULO MÉDIA MÓVEL </B> 
 
  
       MEDIA_MOVEL = 
@@ -488,7 +488,7 @@ No exemplo ele pega os últimos 30 dias e faz o acumulado.
 
  
 
-37 - DATEDIFF 
+<B>35 - DATEDIFF </B>
 
 Tira a diferença entre duas datas 
 
@@ -498,13 +498,13 @@ Tira a diferença entre duas datas
 						fVendas[DtEntrega], 
 						Day) 
 			 
-38 - OPENINGBALANCEMONTH 
+<B>36 - OPENINGBALANCEMONTH </B>
 Sempre pega o saldo do último dia do mês anterior 
 
 		OPENINGBALANCEMONTH([Faturamento],dCalendario[Date]) 
 
  
-39 - STARTOFMONTH 
+<B>37 - STARTOFMONTH </B>
 Sempre pega o saldo do último dia do mês anterior 
 
 		CALCULATE([faturamento], 
@@ -513,7 +513,7 @@ Sempre pega o saldo do último dia do mês anterior
 
 Sempre retorna o saldo do primeiro dia do mês corrente. 
 
-40 - ENDOFMONTH 
+<B>38 - ENDOFMONTH </B>
 Sempre retorna o saldo do último dia do mês corrente
 
 		CALCULATE([faturamento], 
@@ -521,7 +521,7 @@ Sempre retorna o saldo do último dia do mês corrente
 		  ) 
 
  
-41 - LASTDATE 
+<B>39 - LASTDATE</B>
 
 Retorna o último dia do contexto de filtro aplicado a um visual. 
 
@@ -531,7 +531,7 @@ Retorna o último dia do contexto de filtro aplicado a um visual.
 
 FUNÇÕES DE TABELA 
 
-42 - ADDCOLUMNS 
+<B>40 - ADDCOLUMNS </B>
 
 Função calendário consegue pegar uma tabela e adicionar novas colunas 
 
@@ -637,7 +637,7 @@ ADD_COLUMNS_MEDIDA2 =
 		                RETURN RESULT 
 
  
-43 - SUMMARIZE 
+<B>41 - SUMMARIZE </B>
 
 Esta função retorna o agrupamento de algumas linhas, conforme as informações são inseridas na base de dados.
 Vale ressaltar que ela não soma, não faz média, ela somente agrupa as informações repetidas. 
@@ -708,7 +708,7 @@ Média da quantidade de produtos vendidos por dia, visão por cliente
 	
 	                    return result 
 
-44 - CROSSJOIN 
+<B>42 - CROSSJOIN</B>
 
  Função que junta duas tabelas, combinando os resultados. 
 
@@ -775,7 +775,7 @@ Come Medida
 	             RETURN RESULT 
 
  
-45 - ROWS 
+<B>43 - ROWS </B>
  
 
 Criar uma tabela Manual 
@@ -786,7 +786,7 @@ Modelagem – Nova Tabela
 
  
 
-46 - UNION 
+<B>44 - UNION </B>
 
 Unindo duas tabelas – mesmo efeito que a mesclagem acrescentar tabela do Power Query 
 
@@ -801,7 +801,7 @@ Unindo duas tabelas – mesmo efeito que a mesclagem acrescentar tabela do Power
 		            ) 
 
  
-47 - CALCULATETABLE 
+<B>45 - CALCULATETABLE</B>
 
 Todas as funções que são combinadas com a CALCULATE podem ser usadas com a CALCULATETABLE 
 
@@ -813,7 +813,7 @@ Todas as funções que são combinadas com a CALCULATE podem ser usadas com a CA
 
  
 
-48 - INTERSECT 
+<B>46 - INTERSECT </B>
 
 Contagem de produtos distintos em relação ao mês anterior. Avalia o mês corrente e verifica quantos dos produtos distintos do mês selecionado foram também comprados no mês anterior. 
 
@@ -833,7 +833,7 @@ Contagem de produtos distintos em relação ao mês anterior. Avalia o mês corr
 		
 		            return vresult 
 
-49 - EXCEPT 
+<B>47 - EXCEPT </B>
 
 Contagem de produtos distintos em relação ao mês anterior. Avalia o mês corrente e verifica quantos dos produtos distintos foram comprados no mês corrente e não foram comprados no mês passado. 
 
@@ -877,7 +877,7 @@ Usando a Except para contar novos clientes em relação ao ano anterior
 		
 		            return vresult 
 
- 50 - GENERATESERIES 
+ <B>48 - GENERATESERIES </B>
 
 Função cria cenários, para utilizá-la é necessário clicar em MODELAGEM – NOVO PARAMETRO – INTERVALO NUMÉRICO
 
@@ -915,7 +915,7 @@ Necessário criar medida para Simular a Margem
 
  
 
-51 - RANKX 
+<B>49 - RANKX </B>
 
 Função para ranquear 
 
@@ -930,7 +930,7 @@ Expressão - [Faturamento]
 
 		RANKX_1 = RANKX(ALL(dClientes[Nome_Cliente]),[Faturamento],,DESC) 
 
- 52 - TOPN 
+ <B>50 - TOPN </B>
 
 Função como tabela calculada 
 
