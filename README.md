@@ -416,8 +416,7 @@ Se fosse 2 meses anteriores a função seria:
 		     DATEADD(dCalendario[Date],-2,Month) 
 
 Para pegar faturamento do ano anterior: 
- - Deste modo o faturamento do ano anterior ficará acumulado.
-
+ 
 		CALCULATE([Faturamento], 
 		
 		     DATEADD(dCalendario[Date],-1,Year) 
@@ -1013,5 +1012,18 @@ Volte então para a função TOPN que você criou e coloque o nome da medida do 
 		        VAR vtopfaturamento = SUMX(vtop3,[Faturamento]) 
 		
 		        RETURN dIVIDE(vtopfaturamento,[Faturamento]) 
+
+    <B>51 - YTD Acumulado com o ano anterior </B>
+
+#Faturamento_YTD = 
+	                    var max_date = MAX(dimCalendario[Date])
+	                    var result = CALCULATE(
+	                                    [#Faturamento],
+	                                    FILTER(ALLSELECTED(dimCalendario[Date]),
+	                                    dimCalendario[Date]<=max_date
+	                                    )
+	                    )
+	                    return result
+
 
 
